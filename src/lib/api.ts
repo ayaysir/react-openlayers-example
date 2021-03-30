@@ -1,5 +1,7 @@
+import axios from "axios"
 import packageJson from "./../../package.json"
 
 const DEFAULT_URI = packageJson.proxy
 
-export const getInitLocations = fetch(`${DEFAULT_URI}/api/locations`)
+// 좌표 불러오기 api
+export const fetchLocationListApi = () => axios.get("/api/locations")
