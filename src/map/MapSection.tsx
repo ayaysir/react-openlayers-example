@@ -13,10 +13,13 @@ const StyledMapSection = styled.section`
   top: 0px;
 `
 
+// projection: api 좌표에 있는대로
+// center: [경도, 위도] => 
+// 북위(=) 33 ~ 43, 동경(||) 124 ~ 132
+// 일반적으로 좌표계는 위도-경도로 표기하나 openlayers에서는 반대 순서로 기입
 const MapSection: React.FC = () => {
   useLayoutEffect(() => {
-    console.log("efef")
-    const map = new Map({
+    new Map({
         target: 'map-section',
         layers: [
           new TileLayer({
@@ -24,8 +27,9 @@ const MapSection: React.FC = () => {
           })
         ],
         view: new View({
-          center: [0, 0],
-          zoom: 0
+          projection: 'EPSG:4326',
+          center: [126.9779451, 37.5662952],
+          zoom: 16
         })
       });
     

@@ -12,6 +12,13 @@ const FETCH_LIST_FAILURE = "location/FETCH_LIST_FAILURE"
 // 목록 조회 액션 타입
 export const FETCH_LOCATION_LIST = "item/FETCH_LOCATION_LIST"
 
+// 타입(별도 파일로 옮김)
+export const typeOfAction = () => {
+    return { type: FETCH_LOCATION_LIST };
+};
+
+export type ListAction = | ReturnType<typeof typeOfAction>
+
 // 액션 생성 함수 (목록)
 export const fetchListSuccess = createAction(FETCH_LIST_SUCCESS, (data: any) => {
     console.log(data)
@@ -33,8 +40,8 @@ export const fetchLocationList = createAction(FETCH_LOCATION_LIST)
 */
 
 // 상품 목록을 조회하는 태스크
-function* fetchLocationListSaga(action: any): IterableIterator<any> {
-    console.log(action, fetchLocationListApi)
+function* fetchLocationListSaga(action: ListAction): IterableIterator<ListAction> {
+    console.log(action, typeof fetchLocationListApi)
     yield put(startLoading(FETCH_LOCATION_LIST))
     try {
         const response: any = yield call(fetchLocationListApi)

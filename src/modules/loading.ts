@@ -4,15 +4,9 @@ import { createReducer } from "typesafe-actions"
 const START_LOADING = "loading/START_LOADING"
 const END_LOADING = "loading/END_LOADING"
 
-export const startLoading = createAction(START_LOADING, (actionType: any) => {
-    console.log(typeof actionType, actionType)
-    return actionType
-})
+export const startLoading = createAction(START_LOADING, (actionType: string) => actionType)
 
-export const endLoading = createAction(END_LOADING, (actionType: any) => {
-    console.log(typeof actionType, actionType)
-    return actionType
-})
+export const endLoading = createAction(END_LOADING, (actionType: string) => actionType)
 
 const initialState = {}
 

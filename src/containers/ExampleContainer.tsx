@@ -14,7 +14,7 @@ const ExampleListContainer = () => {
         dispatch(fetchLocationList())
     }, [dispatch])
 
-    return <div>get coords</div>
+    return <div></div>
 }
 
 export default ExampleListContainer
