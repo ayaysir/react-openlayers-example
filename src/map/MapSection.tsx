@@ -6,8 +6,11 @@ import OSM from 'ol/source/OSM';
 import styled from 'styled-components';
 
 const StyledMapSection = styled.section`
-    width: 400px;
-    height: 250px;
+  position: absolute;
+  width: 1608px;
+  height: 954px;
+  left: 72px;
+  top: 0px;
 `
 
 const MapSection: React.FC = () => {

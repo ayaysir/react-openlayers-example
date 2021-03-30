@@ -2,10 +2,23 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MapSection from './map/MapSection';
+import Sidebar from './components/Sidebar';
+import styled from 'styled-components';
+
+const StyledApp = styled.div`
+  /* Overview - 측정 1 */
+
+
+  position: relative;
+  width: 1680px;
+  height: 954px;
+
+  background: #FFFFFF;
+`
 
 function App() {
   return (
-    <div className="App">
+    <StyledApp className="App">
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,8 +33,9 @@ function App() {
           Learn React
         </a>
       </header> */}
+      <Sidebar />
       <MapSection />
-    </div>
+    </StyledApp>
   );
 }
 
