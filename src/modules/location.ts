@@ -41,7 +41,6 @@ export const fetchLocationList = createAction(FETCH_LOCATION_LIST)
 
 // 상품 목록을 조회하는 태스크
 function* fetchLocationListSaga(action: ListAction): IterableIterator<ListAction> {
-    console.log(action, typeof fetchLocationListApi)
     yield put(startLoading(FETCH_LOCATION_LIST))
     try {
         const response: any = yield call(fetchLocationListApi)
@@ -60,7 +59,7 @@ export function* locationSaga(): IterableIterator<any> {
 
 // 모듈의 초기 상태
 const initialState = {
-    locations: [],  // 좌표 목록
+    coords: [],  // 좌표 목록
     error: null // 응답에러 정보
 }
 
@@ -70,7 +69,7 @@ const location = createReducer(initialState,
         // 목록 조회 상태 변경
         [FETCH_LIST_SUCCESS]: (state, action) => ({
             ...state,
-            locations: action.payload
+            coords: action.payload.locations
         }),
         [FETCH_LIST_FAILURE]: (state, action) => ({
             ...state,

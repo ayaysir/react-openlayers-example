@@ -1,13 +1,14 @@
 import styled from "styled-components"
 
-import icon1 from "./../../assets/img/tab_icon_1.svg"
-import icon2 from "./../../assets/img/tab_icon_2.svg"
-import icon3 from "./../../assets/img/tab_icon_3.svg"
+import icon1 from "./../assets/img/tab_icon_1.svg"
+import icon2 from "./../assets/img/tab_icon_2.svg"
+import icon3 from "./../assets/img/tab_icon_3.svg"
 
-import selectedIcon1 from "./../../assets/img/tab_icon_1_selected.svg"
-import selectedIcon2 from "./../../assets/img/tab_icon_2_selected.svg"
-import selectedIcon3 from "./../../assets/img/tab_icon_3_selected.svg"
+import selectedIcon1 from "./../assets/img/tab_icon_1_selected.svg"
+import selectedIcon2 from "./../assets/img/tab_icon_2_selected.svg"
+import selectedIcon3 from "./../assets/img/tab_icon_3_selected.svg"
 import { useCallback, useState } from "react"
+import { Link } from "react-router-dom"
 
 
 // sidebar icon props 지정
@@ -26,7 +27,7 @@ interface Menu {
 
 const MENU: Array<Menu> = [
     {
-        name: "map",
+        name: "locations",
         icon: icon1,
         selectedIcon: selectedIcon1,
     }, 
@@ -76,31 +77,26 @@ const StyledIconImg = styled.img`
     margin-top: calc(22px - 8px);
 `
 
-const SidebarIcon: React.FC<SidebarIconProps> = ({ menu, isSelected, changeMenu }: SidebarIconProps) => {
-
-    const clickIcon = () => {
-        changeMenu(menu)
-    }
+const SidebarIcon: React.FC<SidebarIconProps> = ({ menu, isSelected }: SidebarIconProps) => {
 
     return (
-        <StyledSidebarIcon isSelected={isSelected} onClick={clickIcon}>
-            <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} />
-        </StyledSidebarIcon>
+        <>
+            <Link className="menu" to={`/${menu.name}`} >
+                <StyledSidebarIcon isSelected={isSelected} >
+                        <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} />
+
+                </StyledSidebarIcon>
+            </Link>
+        </>
     )
 }
 
-const SidebarTab: React.FC = () => {
-
-    const [selectedMenu, setSelectedMenu] = useState("map")
-
-    const changeMenu = useCallback((menu: Menu) => {
-        setSelectedMenu(menu.name)
-    }, [setSelectedMenu])
+const SidebarTab = ({ selectedMenu }: any) => {
 
     return (
         <StyledSidebarTab>
             {MENU.map((menu: Menu) => (
-                <SidebarIcon key={menu.name} menu={menu} isSelected={menu.name === selectedMenu} changeMenu={changeMenu} />
+                <SidebarIcon key={menu.name} menu={menu} isSelected={selectedMenu === menu.name}/>
             ))}
         </StyledSidebarTab>
     )

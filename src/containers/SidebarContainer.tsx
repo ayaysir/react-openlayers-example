@@ -1,21 +1,21 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Sidebar from "../components/sidebar/Sidebar"
+import Sidebar from "../components/Sidebar"
 
 import { fetchLocationList } from "../modules/location"
 
-const SidebarContainer = () => {
+const SidebarContainer = ({ sidebarContent }: any) => {
     const dispatch = useDispatch()
-
-    const state = useSelector((state: any) => ({
-        ...state,
-    }))
+    const coordsLength = useSelector((props: any) => props.location.coords.length)
 
     useEffect(() => {
-        dispatch(fetchLocationList())
+        console.log("pros", coordsLength)
+        if(!coordsLength) {
+            dispatch(fetchLocationList())
+        }
     }, [dispatch])
 
-    return <Sidebar />
+    return <Sidebar sidebarContent={sidebarContent} selectedMenu={sidebarContent} />
 }
 
 export default SidebarContainer
