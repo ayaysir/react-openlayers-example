@@ -6,7 +6,10 @@ const END_LOADING = "loading/END_LOADING"
 
 export const startLoading = createAction(START_LOADING, (actionType: string) => actionType)
 
-export const endLoading = createAction(END_LOADING, (actionType: string) => actionType)
+export const endLoading = createAction(END_LOADING, (actionType: string) => {
+    console.log("endload", actionType)
+    return actionType
+})
 
 const initialState = {}
 
@@ -17,7 +20,7 @@ const loading = createReducer(initialState, {
     }),
     [END_LOADING]: (state, action) => ({
         ...state,
-        [action.payload]: true,
+        [action.payload]: false,
     }),
 })
 

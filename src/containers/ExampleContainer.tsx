@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import Sidebar from "../components/sidebar/Sidebar"
 
 import { fetchLocationList } from "./../modules/location"
 
-const ExampleListContainer = () => {
+const SidebarContainer = () => {
     const dispatch = useDispatch()
 
     const state = useSelector((state: any) => ({
@@ -14,7 +15,7 @@ const ExampleListContainer = () => {
         dispatch(fetchLocationList())
     }, [dispatch])
 
-    return <div></div>
+    return <Sidebar />
 }
 
-export default ExampleListContainer
+export default SidebarContainer

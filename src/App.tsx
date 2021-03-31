@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import MapSection from './map/MapSection';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/sidebar/Sidebar';
 import styled from 'styled-components';
 import ExampleListContainer from './containers/ExampleContainer';
+import SidebarContainer from './containers/ExampleContainer';
 
 const StyledApp = styled.div`
   /* Overview - 측정 1 */
@@ -19,7 +20,7 @@ const StyledApp = styled.div`
 function App() {
   return (
     <StyledApp className="App">
-      <Sidebar />
+      <SidebarContainer />
       <MapSection />
       <ExampleListContainer />
     </StyledApp>
