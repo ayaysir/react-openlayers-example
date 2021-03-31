@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Sidebar from "../components/sidebar/Sidebar"
 
-import { fetchLocationList } from "./../modules/location"
+import { fetchLocationList } from "../modules/location"
 
 const SidebarContainer = () => {
     const dispatch = useDispatch()

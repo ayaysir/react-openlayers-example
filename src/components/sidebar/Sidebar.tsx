@@ -1,8 +1,6 @@
 import styled from "styled-components"
 import SidebarTab from "./SidebarTab"
 
-
-
 const StyledSidebarContents = styled.div`
     position: absolute;
     z-index: 1;
@@ -13,7 +11,6 @@ const StyledSidebarContents = styled.div`
 
     background: #FBFBFB;
 `
-
 
 
 const Sidebar: React.FC = () => {

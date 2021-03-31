@@ -7,6 +7,40 @@ import icon3 from "./../../assets/img/tab_icon_3.svg"
 import selectedIcon1 from "./../../assets/img/tab_icon_1_selected.svg"
 import selectedIcon2 from "./../../assets/img/tab_icon_2_selected.svg"
 import selectedIcon3 from "./../../assets/img/tab_icon_3_selected.svg"
+import { useCallback, useState } from "react"
+
+
+// sidebar icon props 지정
+interface SidebarIconProps {
+    menu?: any,
+	isSelected?: boolean,
+    onClick?: any,
+    changeMenu?: any,
+}
+
+interface Menu {
+    name: string,
+    icon: string,
+    selectedIcon: string,
+}
+
+const MENU: Array<Menu> = [
+    {
+        name: "map",
+        icon: icon1,
+        selectedIcon: selectedIcon1,
+    }, 
+    {
+        name: "measurement",
+        icon: icon2,
+        selectedIcon: selectedIcon2,
+    }, 
+    {
+        name: "layer",
+        icon: icon3,
+        selectedIcon: selectedIcon3,
+    }, 
+]
 
 const StyledSidebarTab = styled.div`
     position: absolute;
@@ -22,14 +56,8 @@ const StyledSidebarTab = styled.div`
     box-shadow: 0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
 `
 
-// sidebar icon props 지정
-interface SidebarIconProps {
-    icon?: string,
-    selectedIcon?: string,
-	isSelected?: boolean,
-}
 
-const StyledSidebarIcon = styled.div`
+const StyledSidebarIcon = styled.div<SidebarIconProps>`
     width: 44px;
     height: 44px;
     margin-left: 8px;
@@ -39,6 +67,7 @@ const StyledSidebarIcon = styled.div`
     border-radius: 5px;
 
     text-align: center;
+    cursor: pointer;
 `
 
 const StyledIconImg = styled.img`
@@ -47,20 +76,32 @@ const StyledIconImg = styled.img`
     margin-top: calc(22px - 8px);
 `
 
-const SidebarIcon: React.FC<SidebarIconProps> = ({ icon, selectedIcon, isSelected }: SidebarIconProps) => {
+const SidebarIcon: React.FC<SidebarIconProps> = ({ menu, isSelected, changeMenu }: SidebarIconProps) => {
+
+    const clickIcon = () => {
+        changeMenu(menu)
+    }
+
     return (
-        <StyledSidebarIcon isSelected={isSelected}>
-            <StyledIconImg src={isSelected ? selectedIcon : icon} />
+        <StyledSidebarIcon isSelected={isSelected} onClick={clickIcon}>
+            <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} />
         </StyledSidebarIcon>
     )
 }
 
 const SidebarTab: React.FC = () => {
+
+    const [selectedMenu, setSelectedMenu] = useState("map")
+
+    const changeMenu = useCallback((menu: Menu) => {
+        setSelectedMenu(menu.name)
+    }, [setSelectedMenu])
+
     return (
         <StyledSidebarTab>
-            <SidebarIcon icon={icon1} selectedIcon={selectedIcon1}  isSelected={true} />
-            <SidebarIcon icon={icon2} selectedIcon={selectedIcon2} isSelected={false} />
-            <SidebarIcon icon={icon3} selectedIcon={selectedIcon3} isSelected={false} />
+            {MENU.map((menu: Menu) => (
+                <SidebarIcon key={menu.name} menu={menu} isSelected={menu.name === selectedMenu} changeMenu={changeMenu} />
+            ))}
         </StyledSidebarTab>
     )
 }
