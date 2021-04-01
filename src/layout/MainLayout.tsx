@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import SidebarContainer from "../containers/SidebarContainer";
 import MapSection from './../map/MapSection';
 
 const StyledMainLayout = styled.div`
