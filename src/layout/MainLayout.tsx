@@ -1,16 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import MapSection from './../map/MapSection';
+import MapSection from '../components/MapSection';
 
 const StyledMainLayout = styled.div`
-  /* Overview - 측정 1 */
-
-
-  position: relative;
-  width: 1680px;
-  height: 954px;
-
-  background: #FFFFFF;
+  display: flex;
+  flex-direction: row;
 `
 
 const MainLayout: React.FC = ({ children }) => (

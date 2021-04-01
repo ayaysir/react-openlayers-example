@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Route component={MainPage} path="/" exact />
-      <Route component={MainPage} path="/locations" />
+      <Route component={MainPage} path="/:menu" />
     </>
   );
 }
