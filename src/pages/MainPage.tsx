@@ -1,5 +1,6 @@
 import React from "react"
-import SidebarContainer from "../containers/SidebarMainContainer"
+import SidebarContainer from "../containers/SidebarContainer"
+import MapContainer from "../containers/MapContainer"
 import MainLayout from "../layout/MainLayout"
 
 const MainPage: React.FC = ({ match }: any) => (
@@ -19,6 +20,7 @@ const MainPage: React.FC = ({ match }: any) => (
                 selectedMenu="locations"
             />
         }
+        <MapContainer />
     </MainLayout>
 )
 

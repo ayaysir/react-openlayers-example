@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar"
 
 import { fetchLocationList } from "../modules/location"
 
-const SidebarContainer = ({ selectedMenu }: any) => {
+const SidebarContainer = ({ selectedMenu }: { selectedMenu: string }) => {
     const dispatch = useDispatch()
     const { coords } = useSelector((props: any) => ({
         coords: props.location.coords

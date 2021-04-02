@@ -6,6 +6,7 @@ import SidebarMeasurement from "./SidebarMeasurement"
 import SidebarTab from "./SidebarTab"
 
 
+
 const Sidebar: React.FC<SidebarProps> = ({ selectedMenu, coords }) => {
     return(
         <>
@@ -15,6 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedMenu, coords }) => {
                 {selectedMenu === "measurement" && <SidebarMeasurement />}
                 {selectedMenu === "layer" && <SidebarLayer />}
             </SidebarContent>
+
         </>
     )
 }

@@ -82,7 +82,6 @@ const Location: React.FC<LocationFCProps> = ({ title, coord }) => {
 }
 
 const SidebarLocations = ({ coords }: { coords: Array<Coord> }) => {
-    console.log("ii coords", coords)
     return(
         <div>
             {coords && coords.map((coord: Coord, index: number) => (
