@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { SidebarIconProps, Menu, APP_MENU } from "./../props"
+import { SidebarIconProps, Menu, APP_MENU, SidebarTabProps } from "./../props"
 
 import { Link } from "react-router-dom"
 
@@ -45,7 +45,7 @@ const SidebarIcon: React.FC<SidebarIconProps> = ({ menu, isSelected }: SidebarIc
     )
 }
 
-const SidebarTab = ({ selectedMenu }: any) => {
+const SidebarTab: React.FC<SidebarTabProps> = ({ selectedMenu }) => {
 
     return (
         <StyledSidebarTab>

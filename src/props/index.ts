@@ -6,13 +6,34 @@ import selectedIcon1 from "./../assets/img/tab_icon_1_selected.svg"
 import selectedIcon2 from "./../assets/img/tab_icon_2_selected.svg"
 import selectedIcon3 from "./../assets/img/tab_icon_3_selected.svg"
 
+export type Coord = Array<number>
+
 // sidebar icon props 지정
 export interface SidebarIconProps {
     menu?: any,
 	isSelected?: boolean,
-    onClick?: any,
     changeMenu?: any,
 }
+
+export interface SidebarProps {
+    selectedMenu: string,
+    coords: Array<Coord>,
+}
+
+// Location FunctionalComponent props
+export interface LocationFCProps {
+    title: string,
+    coord: Array<number>,
+}
+
+export interface SidebarTabProps {
+    selectedMenu: string,
+}
+
+export interface LocationStateProps {
+    coords: Array<Coord>,  // 좌표 목록
+    error: null // 응답에러 정보
+} 
 
 export interface Menu {
     name: string,

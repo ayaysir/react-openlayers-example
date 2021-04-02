@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Coord, LocationFCProps } from "../props"
 
 import flagIcon from "./../assets/img/location_marker.svg"
 
@@ -47,34 +48,46 @@ const StyledLocation = styled.div`
         border: 0.5px solid #C7C7C7;
         box-sizing: border-box;
         border-radius: 5px;
+
+        padding-left: 10px;
+        padding-top: 3px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 0.9em;
+        /* identical to box height */
+
+        color: #2B4877;
     }
 `
 
-const Location = () => {
+const Location: React.FC<LocationFCProps> = ({ title, coord }) => {
     return (
         <StyledLocation>
             <div className="flag-icon" />
-            <span className="title">Location 1</span>
+            <span className="title">{title}</span>
             <div className="coord">
                 <div>
                     <span className="coord-label">Lat</span>
-                    <input className="coord-number" type="text" readOnly />
+                    <input className="coord-number" type="text" value={coord[0]} readOnly />
                 </div>
                 <div>
                     <span className="coord-label">Long</span>
-                    <input className="coord-number" type="text" readOnly />
+                    <input className="coord-number" type="text" value={coord[1]} readOnly />
                 </div>
             </div>
         </StyledLocation>
     )
 }
 
-const SidebarLocations = () => {
+const SidebarLocations = ({ coords }: { coords: Array<Coord> }) => {
+    console.log("ii coords", coords)
     return(
         <div>
-            <Location />
-            <Location />
-            <Location />
+            {coords && coords.map((coord: Coord, index: number) => (
+                <Location key={`location-${index + 1}`} title={`Location ${index + 1}`} coord={coord} />
+            ))}
         </div>
     )
 }

@@ -8,7 +8,7 @@ const StyledSidebarContent = styled.div`
     background: #FBFBFB;
 `
 
-const SidebarContent: React.FC = ({ children }: any) => {
+const SidebarContent: React.FC = ({ children }) => {
     return (
         <StyledSidebarContent>
             {children}

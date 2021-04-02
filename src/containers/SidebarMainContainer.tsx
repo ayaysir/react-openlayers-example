@@ -6,16 +6,15 @@ import { fetchLocationList } from "../modules/location"
 
 const SidebarContainer = ({ selectedMenu }: any) => {
     const dispatch = useDispatch()
-    const coordsLength = useSelector((props: any) => props.location.coords.length)
+    const { coords } = useSelector((props: any) => ({
+        coords: props.location.coords
+    }))
 
     useEffect(() => {
-        console.log("pros", coordsLength, )
-        if(!coordsLength) {
-            dispatch(fetchLocationList())
-        }
+        dispatch(fetchLocationList())
     }, [dispatch])
 
-    return <Sidebar selectedMenu={selectedMenu} />
+    return <Sidebar selectedMenu={selectedMenu} coords={coords} />
 }
 
 export default SidebarContainer
