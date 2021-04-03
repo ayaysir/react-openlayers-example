@@ -1,7 +1,8 @@
-import styled from "styled-components"
-import { Coord, LocationFCProps } from "../props"
+import React from 'react'
+import styled from 'styled-components'
+import { Coord, LocationFCProps } from '../props'
 
-import flagIcon from "./../assets/img/location_marker.svg"
+import flagIcon from './../assets/img/location_marker.svg'
 
 const StyledLocation = styled.div`
     padding: 10px 23px;
@@ -62,33 +63,33 @@ const StyledLocation = styled.div`
     }
 `
 
-const Location: React.FC<LocationFCProps> = ({ title, coord }) => {
-    return (
-        <StyledLocation>
-            <div className="flag-icon" />
-            <span className="title">{title}</span>
-            <div className="coord">
-                <div>
-                    <span className="coord-label">Lat</span>
-                    <input className="coord-number" type="text" value={coord[0]} readOnly />
-                </div>
-                <div>
-                    <span className="coord-label">Long</span>
-                    <input className="coord-number" type="text" value={coord[1]} readOnly />
-                </div>
-            </div>
-        </StyledLocation>
-    )
+const Location = ({ title, coord }: LocationFCProps) => {
+  return (
+    <StyledLocation>
+      <div className="flag-icon" />
+      <span className="title">{title}</span>
+      <div className="coord">
+        <div>
+          <span className="coord-label">Lat</span>
+          <input className="coord-number" type="text" value={coord[0]} readOnly />
+        </div>
+        <div>
+          <span className="coord-label">Long</span>
+          <input className="coord-number" type="text" value={coord[1]} readOnly />
+        </div>
+      </div>
+    </StyledLocation>
+  )
 }
 
 const SidebarLocations = ({ coords }: { coords: Array<Coord> }) => {
-    return(
-        <div>
-            {coords && coords.map((coord: Coord, index: number) => (
-                <Location key={`location-${index + 1}`} title={`Location ${index + 1}`} coord={coord} />
-            ))}
-        </div>
-    )
+  return (
+    <div>
+      {coords && coords.map((coord: Coord, index: number) => (
+        <Location key={`location-${index + 1}`} title={`Location ${index + 1}`} coord={coord} />
+      ))}
+    </div>
+  )
 }
 
 export default SidebarLocations

@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 
 // 좌표 불러오기 api
-export const fetchLocationListApi = () => axios.get("/api/locations")
+export const fetchLocationListApi = () => axios.get('/api/locations')

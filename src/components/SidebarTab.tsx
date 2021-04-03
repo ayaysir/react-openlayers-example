@@ -1,7 +1,8 @@
-import styled from "styled-components"
-import { SidebarIconProps, Menu, APP_MENU, SidebarTabProps } from "./../props"
+import React from 'react'
+import styled from 'styled-components'
+import { SidebarIconProps, Menu, APP_MENU, SidebarTabProps } from './../props'
 
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 const StyledSidebarTab = styled.div`
     z-index: 2;
@@ -18,7 +19,7 @@ const StyledSidebarIcon = styled.div<SidebarIconProps>`
     margin-left: 8px;
     margin-top: 8px;
 
-    background: ${(props: SidebarIconProps) => props.isSelected && "#1F4782"};
+    background: ${(props: SidebarIconProps) => props.isSelected && '#1F4782'};
     border-radius: 5px;
 
     text-align: center;
@@ -32,28 +33,26 @@ const StyledIconImg = styled.img`
 `
 
 const SidebarIcon: React.FC<SidebarIconProps> = ({ menu, isSelected }: SidebarIconProps) => {
+  return (
+    <>
+      <Link className="menu" to={`/${menu.name}`} >
+        <StyledSidebarIcon isSelected={isSelected} >
+          <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} />
 
-    return (
-        <>
-            <Link className="menu" to={`/${menu.name}`} >
-                <StyledSidebarIcon isSelected={isSelected} >
-                        <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} />
-
-                </StyledSidebarIcon>
-            </Link>
-        </>
-    )
+        </StyledSidebarIcon>
+      </Link>
+    </>
+  )
 }
 
-const SidebarTab: React.FC<SidebarTabProps> = ({ selectedMenu }) => {
-
-    return (
-        <StyledSidebarTab>
-            {APP_MENU.map((menu: Menu) => (
-                <SidebarIcon key={menu.name} menu={menu} isSelected={selectedMenu === menu.name}/>
-            ))}
-        </StyledSidebarTab>
-    )
+const SidebarTab = ({ selectedMenu }: SidebarTabProps) => {
+  return (
+    <StyledSidebarTab>
+      {APP_MENU.map((menu: Menu) => (
+        <SidebarIcon key={menu.name} menu={menu} isSelected={selectedMenu === menu.name} />
+      ))}
+    </StyledSidebarTab>
+  )
 }
 
 export default SidebarTab

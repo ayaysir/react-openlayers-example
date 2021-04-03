@@ -1,4 +1,6 @@
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
+import { SidebarContentProps } from '../props'
 
 const StyledSidebarContent = styled.div`
     z-index: 1;
@@ -8,12 +10,12 @@ const StyledSidebarContent = styled.div`
     background: #FBFBFB;
 `
 
-const SidebarContent: React.FC = ({ children }) => {
-    return (
-        <StyledSidebarContent>
-            {children}
-        </StyledSidebarContent>
-    )
+const SidebarContent = ({ children }: SidebarContentProps) => {
+  return (
+    <StyledSidebarContent>
+      {children}
+    </StyledSidebarContent>
+  )
 }
 
 export default SidebarContent
