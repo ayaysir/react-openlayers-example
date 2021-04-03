@@ -35,6 +35,7 @@ export interface LocationFCProps {
 
 export interface SidebarTabProps {
   selectedMenu: string,
+  allMenu: any,
 }
 
 export type SidebarContentProps = {

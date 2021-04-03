@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SidebarIconProps, Menu, APP_MENU, SidebarTabProps } from './../props'
+import { SidebarIconProps, Menu, SidebarTabProps } from './../props'
 
 import { Link } from 'react-router-dom'
 
@@ -37,18 +37,17 @@ const SidebarIcon: React.FC<SidebarIconProps> = ({ menu, isSelected }: SidebarIc
     <>
       <Link className="menu" to={`/${menu.name}`} >
         <StyledSidebarIcon isSelected={isSelected} >
-          <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} />
-
+          <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} alt={`icon of ${menu.name}`} data-testid="icon-button" />
         </StyledSidebarIcon>
       </Link>
     </>
   )
 }
 
-const SidebarTab = ({ selectedMenu }: SidebarTabProps) => {
+const SidebarTab = ({ selectedMenu, allMenu }: SidebarTabProps) => {
   return (
     <StyledSidebarTab>
-      {APP_MENU.map((menu: Menu) => (
+      {allMenu.map((menu: Menu) => (
         <SidebarIcon key={menu.name} menu={menu} isSelected={selectedMenu === menu.name} />
       ))}
     </StyledSidebarTab>

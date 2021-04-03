@@ -63,13 +63,17 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.23.1",
+    "react-test-renderer": "^17.0.2",
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3"
   },
   "apiBaseURI": "https://angelswing-frontend-test-serverless-api.vercel.app",
   "olViewSetting": {
     "zoom": 16,
-    "center": [126.9779451, 37.5662952],
+    "center": [
+      126.9779451,
+      37.5662952
+    ],
     "projection": "EPSG:4326"
   }
 }

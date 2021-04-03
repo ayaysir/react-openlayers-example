@@ -5,12 +5,12 @@ const StyledMainLayout = styled.div`
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  height: 100%;
+  height: inherit;
 `
 
 const MainLayout = ({ children }: React.PropsWithChildren<any>) => (
     <StyledMainLayout className="main-layout">
-        {children}
+      {children}
     </StyledMainLayout>
 )
 
