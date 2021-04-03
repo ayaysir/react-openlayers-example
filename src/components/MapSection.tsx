@@ -14,18 +14,18 @@ import Feature from 'ol/Feature'
 import { Point } from 'ol/geom'
 
 import 'ol/ol.css'
+import { CoordLatLon, DrawPointProps, MapSectionProps } from '../props'
 
 const StyledMapSection = styled.section`
   width: 100%;
-  height: 954px;
+  height: 100%;
 `
 const StyledDrawPoint = styled.div`
   display: none;
 `
-const DrawPoint = ({ coord, coordLatLon, featuresLayer }: any) => {
+const DrawPoint = ({ coord, coordLatLon, featuresLayer }: DrawPointProps) => {
   useEffect(() => {
-    const coordLonLat = coord || coordLatLon.slice(0).reverse()
-    console.log('drawpoint', coordLonLat)
+    const coordLonLat = coord || coordLatLon!.slice(0).reverse()
 
     const newFeature = new Feature({
       geometry: new Point(coordLonLat)
@@ -38,15 +38,15 @@ const DrawPoint = ({ coord, coordLatLon, featuresLayer }: any) => {
   )
 }
 
-function MapWrapper (props: any) {
+function MapWrapper (props: MapSectionProps) {
   // set intial state - used to track references to OpenLayers
   // objects for use in hooks, event handlers, etc.
   const [map, setMap] = useState()
   const [featuresLayer, setFeaturesLayer] = useState<VectorLayer>()
-  const [clickedCoord, setClickedCoord] = useState<VectorLayer>()
+  const [selectedCoord, setSelectedCoord] = useState<VectorLayer>()
 
   // create state ref that can be accessed in OpenLayers onclick callback function
-  //  https://stackoverflow.com/a/60643670
+  // https://stackoverflow.com/a/60643670
   const mapRef: any = useRef()
   mapRef.current = map
 
@@ -54,15 +54,15 @@ function MapWrapper (props: any) {
   const handleMapClick = (event: any) => {
     // get clicked coordinate using mapRef to access current React state inside OpenLayers callback
     //  https://stackoverflow.com/a/60643670
-    mapRef.current.getCoordinateFromPixel(event.pixel)
-
-    // transform coord to EPSG 4326 standard Lat Long
-    //  const transormedCoord: any = transform(clickedCoord, 'EPSG:3857', 'EPSG:4326')
-
-    console.log(clickedCoord)
-    // set React state
-    setClickedCoord(clickedCoord)
+    const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel)
+    setSelectedCoord(clickedCoord)
   }
+
+  useEffect(() => {
+    if (selectedCoord) {
+      console.log('좌표', selectedCoord)
+    }
+  }, [selectedCoord])
 
   // get ref to div element - OpenLayers will render into this div
   // https://stackoverflow.com/questions/58017215/
@@ -91,7 +91,6 @@ function MapWrapper (props: any) {
     setMap(initMap)
     setFeaturesLayer(initialFeaturesLayer)
 
-    console.log('map', initMap, props.children)
     initMap.on('click', handleMapClick)
   }, [])
 
@@ -107,11 +106,19 @@ function MapWrapper (props: any) {
     }
   }, [featuresLayer, props.features])
 
+  // error 가 발생한 경우 경고창 표시
+  useEffect(() => {
+    if (props.error) {
+      alert('네트워크 에러가 발생했습니다.')
+      console.error(props.error)
+    }
+  }, [props.error])
+
   return (
     <StyledMapSection ref={mapElement} className="map-container">
-      {props.locationsLatLon && props.locationsLatLon.map((coordLatLon: Array<number>, index: number) => {
+      {props.locationsLatLon && props.locationsLatLon.map((coordLatLon: CoordLatLon, index: number) => {
         return (
-            <DrawPoint key={index} coordLatLon={coordLatLon} featuresLayer={featuresLayer} />
+            <DrawPoint key={index} coordLatLon={coordLatLon} featuresLayer={featuresLayer!} />
         )
       })}
     </StyledMapSection>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { SidebarProps } from '../props'
-import SidebarContent from './SidebarContent'
+import SidebarContentWrapper from './SidebarContentWrapper'
 import SidebarLayer from './SidebarLayer'
 import SidebarLocations from './SidebarLocations'
 import SidebarMeasurement from './SidebarMeasurement'
@@ -10,11 +10,11 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedMenu, coords }: SidebarProps)
   return (
     <>
       <SidebarTab selectedMenu={selectedMenu} />
-      <SidebarContent>
+      <SidebarContentWrapper>
         {selectedMenu === 'locations' && <SidebarLocations coords={coords} />}
         {selectedMenu === 'measurement' && <SidebarMeasurement />}
         {selectedMenu === 'layer' && <SidebarLayer />}
-      </SidebarContent>
+      </SidebarContentWrapper>
     </>
   )
 }

@@ -4,10 +4,10 @@ import { SidebarIconProps, Menu, APP_MENU, SidebarTabProps } from './../props'
 
 import { Link } from 'react-router-dom'
 
-const StyledSidebarTab = styled.div`
+const StyledSidebarTab = styled.nav`
     z-index: 2;
     min-width: 60px;
-    height: 954px;
+    // height: 954px;
 
     background: #FFFFFF;
     box-shadow: 0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);

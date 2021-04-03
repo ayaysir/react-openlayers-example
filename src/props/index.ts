@@ -8,8 +8,11 @@ import selectedIcon1 from './../assets/img/tab_icon_1_selected.svg'
 import selectedIcon2 from './../assets/img/tab_icon_2_selected.svg'
 import selectedIcon3 from './../assets/img/tab_icon_3_selected.svg'
 
+import VectorLayer from 'ol/layer/Vector'
+import { Feature } from 'ol'
+
 export type Coord = Array<number>
-export type CoordlatLon = Array<number>
+export type CoordLatLon = Array<number>
 export type CoordLonLat = Array<number>
 
 // sidebar icon props 지정
@@ -41,6 +44,18 @@ export type SidebarContentProps = {
 export interface LocationStateProps {
   coords: Array<Coord>, // 좌표 목록
   error: null // 응답에러 정보
+}
+
+export interface DrawPointProps {
+  coord?: Coord,
+  coordLatLon?: CoordLatLon,
+  featuresLayer: VectorLayer
+}
+
+export interface MapSectionProps {
+  features?: Array<Feature>,
+  error?: any,
+  locationsLatLon?: Array<CoordLatLon>
 }
 
 export interface Menu {
