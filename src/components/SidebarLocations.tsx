@@ -92,4 +92,5 @@ const SidebarLocations = ({ coords }: { coords: Array<Coord> }) => {
   )
 }
 
+export { Location }
 export default SidebarLocations

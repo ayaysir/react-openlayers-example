@@ -5,7 +5,7 @@ import MainPage from './pages/MainPage'
 function App () {
   return (
     <>
-      {/* 지도 새로고침 안되게 */}
+      {/* 라우팅: 지도 새로고침 안되게 */}
       <Switch>
         <Route component={MainPage} path="/:menu" />
         <Route component={MainPage} path="/" exact />

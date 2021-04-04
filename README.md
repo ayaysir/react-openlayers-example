@@ -1,3 +1,12 @@
+# Angelswing 과제테스트 윤범태
+
+##  스크린샷
+![첫 화면](./screenshots/1.jpg)
+![좌표에 원 표시](./screenshots/2.jpg)
+![빈 화면 (2번째 메뉴)](./screenshots/3.jpg)
+![빈 화면 (3번째 메뉴)](./screenshots/4.jpg)
+
+
 # angelswing-frontend-test
 
 -   This README starts with an English instruction.

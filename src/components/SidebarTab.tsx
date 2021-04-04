@@ -54,4 +54,5 @@ const SidebarTab = ({ selectedMenu, allMenu }: SidebarTabProps) => {
   )
 }
 
+export { SidebarIcon }
 export default SidebarTab

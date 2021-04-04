@@ -15,7 +15,7 @@ export type Coord = Array<number>
 export type CoordLatLon = Array<number>
 export type CoordLonLat = Array<number>
 
-// sidebar icon props 지정
+// === 컴포넌트의 props 정보 ===
 export interface SidebarIconProps {
   menu?: any,
   isSelected?: boolean,
@@ -27,7 +27,7 @@ export interface SidebarProps {
   coords: Array<Coord>,
 }
 
-// Location FunctionalComponent props
+// 'Location FunctionalComponent' props
 export interface LocationFCProps {
   title: string,
   coord: Array<number>,
@@ -42,11 +42,6 @@ export type SidebarContentProps = {
   children: | React.ReactNode
 }
 
-export interface LocationStateProps {
-  coords: Array<Coord>, // 좌표 목록
-  error: null // 응답에러 정보
-}
-
 export interface DrawPointProps {
   coord?: Coord,
   coordLatLon?: CoordLatLon,
@@ -59,12 +54,20 @@ export interface MapSectionProps {
   locationsLatLon?: Array<CoordLatLon>
 }
 
+// === redux 상태 정보 ===
+export interface LocationStateProps {
+  coords: Array<Coord>, // 좌표 목록
+  error: null // 응답에러 정보
+}
+
+// === 메뉴 타입 ===
 export interface Menu {
   name: string,
   icon: string,
   selectedIcon: string,
 }
 
+// === 사이드바 아이콘, 메뉴 이름 ===
 export const APP_MENU: Array<Menu> = [
   {
     name: 'locations',

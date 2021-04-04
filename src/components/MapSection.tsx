@@ -78,6 +78,7 @@ function MapWrapper (props: MapSectionProps) {
     // create map
     const initMap = new Map({
       target: mapElement.current,
+      controls: [],
       layers: [
         new TileLayer({
           source: new OSM()
@@ -125,4 +126,5 @@ function MapWrapper (props: MapSectionProps) {
   )
 }
 
+export { DrawPoint }
 export default MapWrapper
