@@ -67,7 +67,6 @@
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3"
   },
-  "apiBaseURI": "https://angelswing-frontend-test-serverless-api.vercel.app",
   "olViewSetting": {
     "zoom": 16,
     "center": [

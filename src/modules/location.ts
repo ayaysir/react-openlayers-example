@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions'
-import { takeLatest, call, put } from 'redux-saga/effects'
+import { takeLatest, put } from 'redux-saga/effects'
 import { createReducer } from 'typesafe-actions'
-import { fetchLocationListApi } from '../lib/api'
+// import { fetchLocationListApi } from '../lib/api'
 
 import { startLoading, endLoading } from './loading'
 
@@ -37,8 +37,25 @@ export const fetchLocationList = createAction(FETCH_LOCATION_LIST)
 function * fetchLocationListSaga (action: ListAction): IterableIterator<ListAction> {
   yield put(startLoading(FETCH_LOCATION_LIST))
   try {
-    const response: any = yield call(fetchLocationListApi)
-    yield put(fetchListSuccess(response.data))
+    // const response: any = yield call(fetchLocationListApi)
+    const mockData = {
+      locations: [
+        [
+          37.56755685,
+          126.97328373
+        ],
+        [
+          37.56722338,
+          126.98351298
+        ],
+        [
+          37.56269872,
+          126.97860143
+        ]
+      ]
+    }
+    // yield put(fetchListSuccess(response.data))
+    yield put(fetchListSuccess(mockData))
   } catch (e) {
     yield put(fetchListFailure(e))
   }

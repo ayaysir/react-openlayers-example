@@ -63,6 +63,7 @@ const StyledLocation = styled.div`
     }
 `
 
+// 개별 좌표 표시 컴포넌트
 const Location = ({ title, coord }: LocationFCProps) => {
   return (
     <StyledLocation>
@@ -82,6 +83,7 @@ const Location = ({ title, coord }: LocationFCProps) => {
   )
 }
 
+// 좌표(Location)들 모아 표시하는 컴포넌트
 const SidebarLocations = ({ coords }: { coords: Array<Coord> }) => {
   return (
     <div>
