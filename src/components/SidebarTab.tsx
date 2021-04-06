@@ -37,7 +37,8 @@ const SidebarIcon: React.FC<SidebarIconProps> = ({ menu, isSelected }: SidebarIc
     <>
       <Link className="menu" to={`/${menu.name}`} >
         <StyledSidebarIcon isSelected={isSelected} >
-          <StyledIconImg src={isSelected ? menu.selectedIcon : menu.icon} alt={`icon of ${menu.name}`} data-testid="icon-button" />
+          {isSelected && <StyledIconImg src={menu.selectedIcon} alt={`icon of ${menu.name}`} />}
+          {!isSelected && <StyledIconImg src={menu.icon} alt={`icon of ${menu.name}`} />}
         </StyledSidebarIcon>
       </Link>
     </>
